@@ -22,6 +22,22 @@ with open(pybank_data) as csv_file:
     csv_header = next(csv_file)
     print(f"Header: {csv_header}")
 
+    for row in csv_reader:
+        #find the total number of months included in data
+        total_months = total_months + 1
+
+        #find the total amount of profit/losses over the entire period
+        total_revenue = (int(row[1])) + total_revenue
+
+print("Total Months: " + str(total_months))
+print("Total Revenue: $" + str(total_revenue))
+       
+
+
+
+
+
+
 
 
         
