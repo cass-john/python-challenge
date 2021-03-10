@@ -3,7 +3,8 @@ import os
 import csv
 
 #lists to store data
-
+revchange = []
+date = []
 
 #reset values at 0
 total_months = 0
@@ -29,8 +30,10 @@ with open(pybank_data) as csv_file:
         #find the total amount of profit/losses over the entire period
         total_revenue = (int(row[1])) + total_revenue
 
-print("Total Months: " + str(total_months))
-print("Total Revenue: $" + str(total_revenue))
+        #find the average change
+        
+
+
        
 
 
