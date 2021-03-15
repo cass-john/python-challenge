@@ -20,7 +20,7 @@ with open(pybank_data) as csvfile:
     #Reading the header row
     csv_header = next(csvreader)
 
-    #Reading first row so we can track changes
+    #Reading first row 
     first_row = next(csvreader)
     total_months += 1
     total_revenue += int(first_row[1])
@@ -42,21 +42,20 @@ with open(pybank_data) as csvfile:
         #Total revenue
         total_revenue = total_revenue + int(row[1])
 
-    #Finding the greatest increase
-    greatest_increase = max(profits)
-    greatest_index = profits.index(greatest_increase)
-    greatest_date = dates[greatest_index]
+        #Finding the average change
+        avg_change = sum(profits)/len(profits)
 
-    #Find greatest decrease
-    greatest_decrease = min(profits)
-    worst_index = profits.index(greatest_decrease)
-    worst_date = dates[worst_index]
+        #Finding the greatest increase
+        greatest_increase = max(profits)
+        greatest_index = profits.index(greatest_increase)
+        greatest_date = dates[greatest_index]
 
-    #Finding the average change
-    avg_change = sum(profits)/len(profits)
-    
+        #Find greatest decrease
+        greatest_decrease = min(profits)
+        worst_index = profits.index(greatest_decrease)
+        worst_date = dates[worst_index]
 
-#Displaying information
+#print info
 print("Financial Analysis")
 print("---------------------")
 print(f"Total Months: {str(total_months)}")
@@ -64,6 +63,21 @@ print(f"Total: ${str(total_revenue)}")
 print(f"Average Change: ${str(round(avg_change,2))}")
 print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})")
 print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
+
+#output data to txt
+#set output path
+pybank_results = os.path.join("..", "python-challenge", "PyBank", "Analysis", "pybank_results.txt")
+
+with open(pybank_results, "w", newline="") as text_file:
+    writer = csv.writer(text_file)
+
+    text_file.write("Financial Analysis")
+    text_file.write("---------------------")
+    text_file.write(f"Total Months: {str(total_months)}")
+    text_file.write(f"Total: ${str(total_revenue)}")
+    text_file.write(f"Average Change: ${str(round(avg_change,2))}")
+    text_file.write(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})")
+    text_file.write(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
 
 
 
