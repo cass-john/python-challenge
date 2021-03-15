@@ -55,7 +55,7 @@ with open(pybank_data) as csvfile:
         worst_index = profits.index(greatest_decrease)
         worst_date = dates[worst_index]
 
-#print info
+#print data
 print("Financial Analysis")
 print("---------------------")
 print(f"Total Months: {str(total_months)}")
@@ -68,6 +68,7 @@ print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
 #set output path
 pybank_results = os.path.join("..", "python-challenge", "PyBank", "Analysis", "pybank_results.txt")
 
+#write data to txt file
 with open(pybank_results, "w", newline="") as text_file:
     writer = csv.writer(text_file)
 
